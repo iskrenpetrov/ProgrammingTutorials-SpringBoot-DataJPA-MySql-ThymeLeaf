@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>Tutorials - home page</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<input type="checkbox" id="check">
+<label for="check">
+    <i id="btn">&#9776; </i>
+    <i id="cancel"> &times </i>
+</label>
+<div class="sidebar">
+    <header class="header"></header>
+    <header>Menu</header>
+    <a href="/" class="active">Home
+        <span>page</span>
+    </a>
+    <a href="add_tutorial">Add
+        <span>tutorial</span>
+    </a>
+</div>
+<div align="center">
+    <div class="padd">
+        <img src="images/tutorials.png">
+  <!--  <h1>Tutorials CRUD Application</h1> -->
+</div>
+   <!-- <a href="add_tutorial"><button class="button button">Add tutorial</button></a>
+    <br/> -->
+    <p><form th:action="@{/}">
+        <input type="text" class="inputform" name="keyword" id="keyword" th:value="${keyword}" placeholder="Type something to search tutorials.."/>&nbsp;
+    <button class="button button" type="submit" >Search</button>
+    </form></p>
+    <table border="1" cellpadding="10">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Author</th>
+            <th>Posted</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="tutorial : ${listTutorials}">
+            <td th:text="${tutorial.id}">ID</td>
+            <td th:text="${tutorial.name}">Name</td>
+            <td th:text="${tutorial.author}">Author</td>
+            <td th:text="${tutorial.currentDate}">Posted</td>
+            <td>
+                <a th:href="@{'/view/' + ${tutorial.id}}"><button class="button button">View tutorial</button></a>
+                <a th:href="@{'/edit/' + ${tutorial.id}}"><button class="button button">Edit</button></a>
+                &nbsp;&nbsp;&nbsp;
+                <a th:href="@{'/delete/' + ${tutorial.id}}"><button class="button delete">Delete</button></a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+  <!--  <div th:if="${totalPages > 1}">
+        <div class="boxform">Total Items: [[${totalItems}]]</div>
+
+        <a button class="button button" th:if="${currentPage > 1}" th:href="@{'/index/1'}">First</a>
+        <span button class="button button" th:unless="${currentPage > 1}">First</span>
+        &nbsp;&nbsp;
+
+        <a button class="button button" th:if="${currentPage > 1}" th:href="@{'/index/' + ${currentPage - 1}}">Previous</a>
+        <span button class="button button"  th:unless="${currentPage > 1}">Previous</span>
+
+        &nbsp;&nbsp;
+
+        <span th:each="i: ${#numbers.sequence(1, totalPages)}">
+			<a button class="button button" th:if="${currentPage != i}" th:href="@{'/index/' + ${i}}">[[${i}]]</a>
+			<span th:unless="${currentPage != i}">[[${i}]]</span>
+			&nbsp;
+		</span>
+
+        <a button class="button button"th:if="${currentPage < totalPages}" th:href="@{'/index/' + ${currentPage + 1}}">Next</a>
+        <span button class="button button"th:unless="${currentPage < totalPages}">Next</span>
+        &nbsp;&nbsp;
+
+        <a button class="button button"th:if="${currentPage < totalPages}" th:href="@{'/index/' + ${totalPages}}">Last</a>
+        <span button class="button button" th:unless="${currentPage < totalPages}">Last</span>
+    </div> -->
+</div>
+<div id="footer">
+<p align="center"><img src="/images/booklogo.png" width="6%"></p>
+    <p>ProgrammingTutorials &copy; All rights reserved.</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <title>Tutorials - view tutorial</title>
+    <link rel="stylesheet" type="text/css" href="/styles.css">
+</head>
+<body>
+<input type="checkbox" id="check">
+<label for="check">
+    <i id="btn">&#9776; </i>
+    <i id="cancel"> &times </i>
+</label>
+<div class="sidebar">
+    <header>Menu</header>
+    <a href="/">Home
+        <span>page</span>
+    </a>
+    <a href="/add_tutorial">Add
+        <span>tutorial</span>
+    </a>
+</div>
+<div align="center">
+    <div class="padd">
+        <img src="/images/tutorials.png">
+        <!--  <h1>Tutorials CRUD Application</h1> -->
+    </div>
+    <span th:object="${tutorial}">
+    <h4><span class="boxform" th:text="*{name}"></span></h4>
+        <p><span class="boxform" th:text="*{content}"></span></p>
+        <p>Author: <span class="boxform" th:text="*{author}"></span></p>
+        <p>Posted: <span class="boxform" th:text="*{currentDate}"></span></p>
+        </span>
+</div>
+<div id="footer">
+    <p align="center"><img src="/images/booklogo.png" width="6%"></p>
+    <p>ProgrammingTutorials &copy; All rights reserved.</p>
+</div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8" />
+    <title>Tutorials - adding a tutorial</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+<input type="checkbox" id="check">
+<label for="check">
+    <i id="btn">&#9776; </i>
+    <i id="cancel"> &times </i>
+</label>
+<div class="sidebar">
+    <header>Menu</header>
+    <a href="/">Home
+        <span>page</span>
+    </a>
+    <a href="add_tutorial" class="active">Add
+        <span>tutorial</span>
+    </a>
+</div>
+<div align="center">
+    <div class="padd">
+        <img src="images/tutorials.png">
+   <!-- <h1>Create new tutorial</h1>-->
+    </div>
+    <br />
+    <form action="#" th:action="@{/save}" th:object="${tutorial}"
+          method="post">
+            <p><input type="text" class="inputform" th:field="*{name}" placeholder="Enter name of tutorial"/></p>
+            <p><textarea type="text" class="inputform" th:field="*{content}" placeholder="Enter content"></textarea></p>
+            <p><input type="text" class="inputform" th:field="*{author}" placeholder="Enter author"/></p>
+            <button type="submit" class="button button">Save</button>
+    </form>
+</div>
+<div id="footer">
+    <p align="center"><img src="/images/booklogo.png" width="6%"></p>
+    <p>ProgrammingTutorials &copy; All rights reserved.</p>
+</div>
+</body>
+</html>
