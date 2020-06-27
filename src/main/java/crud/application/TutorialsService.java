@@ -9,28 +9,20 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-@Service
-@Transactional
+@Service //similar to @Component, indicates that an annotated class is a service class.
+@Transactional //important aspects such as transaction propagation are handled automatically.
 public class TutorialsService {
 
-    @Autowired
+    @Autowired // marks a constructor, field, or setter method to be autowired by Spring dependency injection.
     private TutorialsRepository repo;
 
     public List<Tutorials> listAll(String keyword) {
         if (keyword != null) {
             return repo.search(keyword);
         }
+        //If the searching form is equal to null, invoke the default findAll() member function
         return repo.findAll();
     }
-
-//    public Page<Tutorials> listAll(String keyword,int pageNum) {
-//
-//        Pageable pageable = PageRequest.of(pageNum - 1, 5);
-//        if (keyword != null) {
-//            return (Page<Tutorials>) repo.search(keyword);
-//        }
-//        return repo.findAll(pageable);
-//    }
 
     public void save(Tutorials tutorial) {
         repo.save(tutorial);
