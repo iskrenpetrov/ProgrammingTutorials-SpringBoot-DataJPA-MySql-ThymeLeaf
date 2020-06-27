@@ -26,7 +26,6 @@
 <div align="center">
     <div class="padd">
         <img src="images/tutorials.png">
-  <!--  <h1>Tutorials CRUD Application</h1> -->
 </div>
    <!-- <a href="add_tutorial"><button class="button button">Add tutorial</button></a>
     <br/> -->
@@ -59,31 +58,6 @@
         </tr>
         </tbody>
     </table>
-  <!--  <div th:if="${totalPages > 1}">
-        <div class="boxform">Total Items: [[${totalItems}]]</div>
-
-        <a button class="button button" th:if="${currentPage > 1}" th:href="@{'/index/1'}">First</a>
-        <span button class="button button" th:unless="${currentPage > 1}">First</span>
-        &nbsp;&nbsp;
-
-        <a button class="button button" th:if="${currentPage > 1}" th:href="@{'/index/' + ${currentPage - 1}}">Previous</a>
-        <span button class="button button"  th:unless="${currentPage > 1}">Previous</span>
-
-        &nbsp;&nbsp;
-
-        <span th:each="i: ${#numbers.sequence(1, totalPages)}">
-			<a button class="button button" th:if="${currentPage != i}" th:href="@{'/index/' + ${i}}">[[${i}]]</a>
-			<span th:unless="${currentPage != i}">[[${i}]]</span>
-			&nbsp;
-		</span>
-
-        <a button class="button button"th:if="${currentPage < totalPages}" th:href="@{'/index/' + ${currentPage + 1}}">Next</a>
-        <span button class="button button"th:unless="${currentPage < totalPages}">Next</span>
-        &nbsp;&nbsp;
-
-        <a button class="button button"th:if="${currentPage < totalPages}" th:href="@{'/index/' + ${totalPages}}">Last</a>
-        <span button class="button button" th:unless="${currentPage < totalPages}">Last</span>
-    </div> -->
 </div>
 <div id="footer">
 <p align="center"><img src="/images/booklogo.png" width="6%"></p>
