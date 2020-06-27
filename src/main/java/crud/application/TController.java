@@ -13,14 +13,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
-@Controller
+@Controller //marks the class as web controller, capable of handling the requests.
 public class TController {
 
-    @Autowired
+    @Autowired //marks a constructor, field, or setter method to be autowired by Spring dependency injection.
     private TutorialsService service;
 
-    @RequestMapping("/")
-    public String index(Model model, @Param("keyword") String keyword) {
+    @RequestMapping("/") //this annotation maps HTTP requests to handler methods
+    //provide a view with usable data, we simply add this data to its Model object
+    public String index(Model model, @Param("keyword") String keyword)  {
         List<Tutorials> listTutorials = service.listAll(keyword);
         model.addAttribute("listTutorials", listTutorials);
         model.addAttribute("keyword", keyword);
@@ -28,44 +29,16 @@ public class TController {
         return "index";
     }
 
-//    @RequestMapping("/")
-//    public String index(Model model, @Param("keyword") String keyword) {
-////        List<Tutorials> listTutorials = service.listAll(keyword);
-////        model.addAttribute("listTutorials", listTutorials);
-////        model.addAttribute("keyword", keyword);
-//
-//        return Page(model,keyword,1);
-//        //return "index";
-//    }
-//
-//    @RequestMapping("/index/{pageNum}")
-//    public String Page(Model model,@Param("keyword") String keyword,
-//                           @PathVariable(name = "pageNum") int pageNum) {
-//
-//        Page<Tutorials> page = service.listAll(keyword,pageNum);
-//
-//        List<Tutorials> listTutorials = page.getContent();
-//        model.addAttribute("currentPage", pageNum);
-//        model.addAttribute("totalPages", page.getTotalPages());
-//        model.addAttribute("totalItems", page.getTotalElements());
-//
-//
-//
-//        model.addAttribute("listTutorials", listTutorials);
-//        model.addAttribute("keyword", keyword);
-//
-//        return "index";
-//    }
-
-
     @RequestMapping("/add_tutorial")
     public String add(Model model) {
         Tutorials tutorial = new Tutorials();
         model.addAttribute("tutorial", tutorial);
+        //"tutorial" is a name which you can use it in your view get the value with ${products}
 
         return "add_tutorial";
     }
-
+    //@ModelAttribute annotation that binds a method parameter or method return value
+    // to a named model attribute and then exposes it to a web view.
     @RequestMapping(value = "/save", method = RequestMethod.POST)
     public String save(@ModelAttribute("tutorial") Tutorials tutorial) {
         service.save(tutorial);
@@ -73,6 +46,7 @@ public class TController {
         return "redirect:/";
     }
 
+    //@PathVariable annotation which indicates that a method parameter should be bound to a URI template variable.
     @RequestMapping("/edit/{id}")
     public ModelAndView Edit(@PathVariable(name = "id") int id) {
         ModelAndView mav = new ModelAndView("edit_tutorial");
