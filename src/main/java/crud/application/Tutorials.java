@@ -8,7 +8,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-@Entity
+@Entity // This annotation tells Hibernate to make a table out of this class
 public class Tutorials {
     private Long id;
     private String name;
@@ -33,7 +33,17 @@ public class Tutorials {
 
     }
 
-    @Id
+    @Id //The id attribute allows you to specify exactly one id.
+    //@GeneratedValue: This annotation is used to specify the primary key
+    // generation strategy to use. i.e Instructs database to generate a value
+    // for this field automatically. If the strategy is not specified by default
+    // AUTO will be used.
+    // This GenerationType indicates that the persistence provider must assign
+    // primary keys for the entity using a database identity column. IDENTITY column
+    // is typically used in SQL Server. This special type column is populated
+    // internally by the table itself without using a separate sequence. If underlying
+    // database doesn't support IDENTITY column or some similar variant then the
+    // persistence provider can choose an alternative appropriate strategy.
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long getId() {
         return id;
